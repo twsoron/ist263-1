@@ -1,0 +1,8 @@
+body{font-family:'Times New Roman', Times, serif; background-color: #e5d0cc;}
+h1,h2{color: #000000;}
+.evenrow{background-color:lightgrey}
+h1{font-size: 2em}
+h2{font-size: 1.5em}
+nav{background-color: #d1c4e9; padding: 10px; margin-bottom: 30px;}
+nav a{color:#444554}
+nav a:hover{color:#7F7B82;}
