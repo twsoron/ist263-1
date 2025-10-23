@@ -1,0 +1,27 @@
+body{font-family:'Times New Roman', Times, serif; background-color: #fff0da; color: #2b3636;}
+h1,h2{color: #000000;}
+.evenrow{background-color:lightgrey}
+h1{font-size: 2em}
+h2{font-size: 1.5em}
+nav{background-color: #c2d8ff; padding: 10px; margin-bottom: 30px; border-radius: 1em;}
+nav a{color:#444554}
+nav a:hover{color:#7F7B82;}
+footer {overflow: hidden;}
+.clear {clear: both;}
+.left {float: left;}
+.right {float: right;}
+.banner{float: left; margin-right: 20px;}
+
+.part1 {display: flex; flex-direction: column;}
+.part1 article {padding: 20px;}
+.article1, .article2, .article3{margin: 10px;}
+.article1{flex: 2; order: 1; background-color: bisque; border-radius: 1em;}
+.article2{flex: 2; order: 2; background-color: bisque; border-radius: 1em;}
+.article3{flex: 2; order: 3; background-color: bisque; border-radius: 1em;}
+
+.behind_box {display: flex; flex-direction: column; background-color: bisque; border-radius: 1em;}
+.part2 {display: flex;}
+.part2 article {padding: 20px;}
+.address, .email{margin: 10px;}
+.address{flex: 1; order: 1; background-color: rgb(237, 197, 148); border-radius: 1em; margin: 10px; padding: 20px;}
+.email{flex: 1; order: 2; background-color: rgb(237, 197, 148); border-radius: 1em; margin: 10px; padding: 20px;}
