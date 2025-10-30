@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Tim Soron - Bio</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/4cf078c340.js" crossorigin="anonymous"></script>
+        <style>
+             .grid{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);  /* 3 equal columns that fill the screen */
+        gap: 20px;                               /* 20px between rows & columns */
+        grid-auto-rows: auto; 
+        grid-auto-columns: auto;                   /* rows size to tallest item in that row */
+        grid-auto-flow: dense;                   /* pack tightly; no holes */
+        width: 100%;
+        align-items: stretch;
+        }
+
+        .box1 {
+            background-color: lightblue;
+            border-radius: 15px;
+            padding: 20px;
+        }
+        .box2 {
+            background-color: lightgreen;
+            border-radius: 15px;
+            padding: 20px;
+        }
+        .h1 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+        }
+        </style>
+
+    </head>
+    <body> 
+        <h1 class="h1">week 9 participation</h1>
+        <div class="grid">
+        <div class = 'box1'> 
+            <i class="fa-brands fa-github"></i>
+        </div>
+        <div class = 'box2'> 
+            <i class="fa-brands fa-apple"></i>
+        </div>
+        </div>
+    </body> 
+</html>
