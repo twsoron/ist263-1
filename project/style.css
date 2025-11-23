@@ -1,7 +1,70 @@
-.navbar{display: flex;
-           background-color: #5bafef;
-           border-radius: 1em;
-           padding : 1em;
-              margin: 1em;
-              
-           }
+.navbar {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 10px 20px;
+   background-color: #7cc5fc;
+   border-radius: 1em;
+}
+
+.logo {
+   font-size: 1.4em;
+   font-weight: bold;
+}
+
+.nav-links a {
+   margin-left: 5px;
+   text-decoration: none;
+   color: black;
+}
+
+.nav-links span {
+   margin-left: 5px;
+   margin-right: 5px;
+}
+
+.flex-container {
+   display: flex;
+   gap: 20px;
+}
+
+.flex-item {
+   flex: 1;
+   padding: 10px;
+   border-radius: 1em;
+   background-color: #aedcff;
+   text-align: center;
+   flex-direction: column;
+}
+body {font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;}
+.flex-item ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    list-style: disc;
+    display: inline-block;
+    text-align: left;
+
+}
+
+.flex-item li {
+    margin: 4px 0;
+}
+
+    @media screen and (max-width: 999px) {
+     nav a {display: block; width: 100%; margin-bottom: 5px;}
+     nav span{display: none;}
+    }
+.floatleft {
+    float: left;
+      margin-right: 15px;      
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  
+}
+footer p { 
+   color: white;
+}
