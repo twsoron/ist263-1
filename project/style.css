@@ -32,7 +32,7 @@
    flex: 1;
    padding: 10px;
    border-radius: 1em;
-   background-color: #aedcff;
+   background-color: rgba(174, 220, 255, 0.7);
    text-align: center;
    flex-direction: column;
 }
@@ -70,4 +70,10 @@ footer p {
 }
 h2, h3 {
    font-size: 1.2em;
+}
+.flex-nocenter {
+   flex: 1;
+   padding: 10px;
+   border-radius: 1em;
+   background-color: rgba(174, 220, 255, 0.7);
 }
