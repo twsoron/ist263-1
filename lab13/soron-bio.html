@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>VP</title>
+        <style>
+            .small, .large { display: none; }
+         @media screen and (min-width: 800px) {
+      body {
+        background-color: rgb(255, 0, 0);
+        color: white;}
+        .large{ display: block; }
+      }
+    
+    @media screen and (max-width: 799px) {
+      body {
+        background-color: blue;
+        color: white;
+        display: block;
+      }
+        .small{ display: block; }
+    }
+        </style>
+    </head>
+    <body>
+            <p class = "large"> im large screen </p>
+            <p class = "small"> im small screen </p>
+    </body>
+</html>
