@@ -105,6 +105,7 @@ h3 {
    height: 70vh;
 }
 #map {
+   height: 60vh;
    flex: 3;
    border-radius: 1em;
 }
