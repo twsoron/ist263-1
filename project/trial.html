@@ -49,76 +49,79 @@
         </div>
     </div>
 
-            <script>
-                const map = L.map("map").setView([42.9, -75.5], 6);
-                L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-                    maxZoom: 18,
-                    attribution: '&copy; OpenStreetMap contributors'
-                }).addTo(map);
-                Papa.parse("ski_mtn_ny.csv", {
-                    download: true,
-                    header: true,
-                    skipEmptyLines: true,
-                    complete: function (results) {
-                        const rows = results.data;
+    <script>
+        const map = L.map("map").setView([42.9, -75.5], 6);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 18,
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+        setTimeout(() => map.invalidateSize(), 200);
+        Papa.parse("ski_mtn_ny.csv", {
+            download: true,
+            header: true,
+            skipEmptyLines: true,
+            complete: function (results) {
+                const rows = results.data;
 
-                        rows.forEach(row => {
-                            const name = row.name;
-                            const lat = parseFloat(row.latitude);
-                            const lon = parseFloat(row.longitude);
-                            const acres = row.skiable_area_acres;
-                            const popupContent = `
+                rows.forEach(row => {
+                    const name = row.name;
+                    const lat = parseFloat(row.latitude);
+                    const lon = parseFloat(row.longitude);
+                    const acres = row.skiable_area_acres;
+                    const popupContent = `
             <strong>${name}</strong><br>
             Skiable area: ${acres}`;
-                            L.marker([lat, lon])
-                                .addTo(map)
-                                .bindPopup(popupContent);
-                        });
-                    }
+                    L.marker([lat, lon])
+                        .addTo(map)
+                        .bindPopup(popupContent);
                 });
-                let userMarker;
-                const redIcon = L.divIcon({
-                    className: "",
-                    html: `<div style="width:14px;height:14px;border-radius:50%;
+            }
+        });
+        let userMarker;
+        const redIcon = L.divIcon({
+            className: "",
+            html: `<div style="width:14px;height:14px;border-radius:50%;
     background:red;border:2px solid white;"></div>`,
-                    iconSize: [14, 14],
-                    iconAnchor: [7, 7]
-                });
+            iconSize: [14, 14],
+            iconAnchor: [7, 7]
+        });
 
-                async function geocode(q) {
-                    const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(q)}`;
-                    const data = await (await fetch(url)).json();
-                    if (!data.length) throw Error("Location not found");
-                    return { lat: +data[0].lat, lon: +data[0].lon };
-                }
+        async function geocode(q) {
+            const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(q)}`;
+            const data = await (await fetch(url)).json();
+            if (!data.length) throw Error("Location not found");
+            return { lat: +data[0].lat, lon: +data[0].lon };
+        }
 
-                function miles(lat1, lon1, lat2, lon2) {
-                    const R = 3958.8, toRad = d => d * Math.PI / 180;
-                    const dLat = toRad(lat2 - lat1), dLon = toRad(lon2 - lon1);
-                    const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
-                    return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-                }
+        function miles(lat1, lon1, lat2, lon2) {
+            const R = 3958.8, toRad = d => d * Math.PI / 180;
+            const dLat = toRad(lat2 - lat1), dLon = toRad(lon2 - lon1);
+            const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+            return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        }
 
-                document.getElementById("go").onclick = async () => {
-                    const q = document.getElementById("loc").value.trim();
-                    if (!q) return;
-                    const { lat, lon } = await geocode(q);
+        document.getElementById("go").onclick = async () => {
+            const q = document.getElementById("loc").value.trim();
+            if (!q) return;
+            const { lat, lon } = await geocode(q);
 
-                    if (userMarker) map.removeLayer(userMarker);
-                    userMarker = L.marker([lat, lon], { icon: redIcon }).addTo(map);
-                    map.setView([lat, lon], 9);
+            if (userMarker) map.removeLayer(userMarker);
+            userMarker = L.marker([lat, lon], { icon: redIcon }).addTo(map);
+            map.setView([lat, lon], 9);
 
-                    const top5 = resorts
-                        .map(r => ({ ...r, d: miles(lat, lon, r.lat, r.lon) }))
-                        .sort((a, b) => a.d - b.d)
-                        .slice(0, 5);
+            const top5 = resorts
+                .map(r => ({ ...r, d: miles(lat, lon, r.lat, r.lon) }))
+                .sort((a, b) => a.d - b.d)
+                .slice(0, 5);
 
-                    document.getElementById("closest").innerHTML =
-                        "<h3>5 Closest Resorts</h3><ol>" +
-                        top5.map(r => `<li>${r.name} — ${r.d.toFixed(1)} mi</li>`).join("") +
-                        "</ol>";
-                };
-            </script>
+            document.getElementById("closest").innerHTML =
+                "<h3>5 Closest Resorts</h3><ol>" +
+                top5.map(r => `<li>${r.name} — ${r.d.toFixed(1)} mi</li>`).join("") +
+                "</ol>";
+            setTimeout(() => map.invalidateSize(), 200);
+
+        };
+    </script>
 </body>
 
 </html>
