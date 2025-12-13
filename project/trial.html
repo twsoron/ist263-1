@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>New York Ski Mountains Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+  </script>
+
+  <!-- PapaParse -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js">
+  </script>
+
+  <style>
+
+
+    header {
+      padding: 12px 16px;
+      background: #0f172a;
+      color: white;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.25rem;
+    }
+
+    header p {
+      margin: 4px 0 0;
+      font-size: 0.9rem;
+      color: #cbd5f5;
+    }
+
+    #map {
+      height: calc(100vh - 70px);
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>New York Ski Mountains</h1>
+    <p>Interactive map of ski areas across New York State</p>
+  </header>
+
+  <div id="map"></div>
+
+  <script>
+    // -----------------------------
+    // 1. Create the map
+    // -----------------------------
+    const map = L.map("map").setView([42.9, -75.5], 6);
+
+    // -----------------------------
+    // 2. Base map tiles
+    // -----------------------------
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // -----------------------------
+    // 3. Load CSV from GitHub Pages
+    // -----------------------------
+    Papa.parse("ski_mtn_ny.csv", {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: function (results) {
+        const rows = results.data;
+
+        rows.forEach(row => {
+          const name = row.name;
+          const lat = parseFloat(row.latitude);
+          const lon = parseFloat(row.longitude);
+          const acres = row.skiable_area_acres;
+
+          // Skip rows without valid coordinates
+          if (Number.isNaN(lat) || Number.isNaN(lon)) return;
+
+          const popupContent = `
+            <strong>${name}</strong><br>
+            Skiable area: ${acres}
+          `;
+
+          L.marker([lat, lon])
+            .addTo(map)
+            .bindPopup(popupContent);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
