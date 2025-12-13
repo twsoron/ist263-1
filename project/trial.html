@@ -100,6 +100,56 @@
         });
       }
     });
+    let userMarker;
+
+// quick red dot marker
+const redIcon = L.divIcon({
+  className: "",
+  html: `<div style="width:14px;height:14px;border-radius:50%;
+    background:red;border:2px solid white;"></div>`,
+  iconSize: [14,14],
+  iconAnchor: [7,7]
+});
+
+// geocode user input -> lat/lon (OpenStreetMap)
+async function geocode(q) {
+  const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(q)}`;
+  const data = await (await fetch(url)).json();
+  if (!data.length) throw Error("Location not found");
+  return { lat: +data[0].lat, lon: +data[0].lon };
+}
+
+// distance in miles
+function miles(lat1, lon1, lat2, lon2) {
+  const R = 3958.8, toRad = d => d * Math.PI / 180;
+  const dLat = toRad(lat2-lat1), dLon = toRad(lon2-lon1);
+  const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLon/2)**2;
+  return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+document.getElementById("go").onclick = async () => {
+  const q = document.getElementById("loc").value.trim();
+  if (!q) return;
+
+  const {lat, lon} = await geocode(q);
+
+  // red marker for user
+  if (userMarker) map.removeLayer(userMarker);
+  userMarker = L.marker([lat, lon], {icon: redIcon}).addTo(map);
+  map.setView([lat, lon], 9);
+
+  // 5 closest resorts
+  const top5 = resorts
+    .map(r => ({...r, d: miles(lat, lon, r.lat, r.lon)}))
+    .sort((a,b) => a.d - b.d)
+    .slice(0, 5);
+
+  // display under map
+  document.getElementById("closest").innerHTML =
+    "<h3>5 Closest Resorts</h3><ol>" +
+    top5.map(r => `<li>${r.name} — ${r.d.toFixed(1)} mi</li>`).join("") +
+    "</ol>";
+};
   </script>
 </body>
 </html>
