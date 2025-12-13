@@ -47,6 +47,7 @@ main {
 
 body {
    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+   font-size: 1.2em;
 }
 
 .flex-item ul {
@@ -86,6 +87,11 @@ footer {
 
 footer p {
    color: white;
+   font-size: 0.6em;
+}
+
+h1 {
+   font-size: 1.5em;
 }
 
 h2,
@@ -112,4 +118,17 @@ h3 {
 #userside {
    flex: 1;
    padding: 10px;
+}
+#personalback {
+   border-radius: 1em;
+}
+#backgroundp {
+   flex: 1;
+   padding: 10px;
+   border-radius: 1em;
+   background-color: rgba(174, 220, 255, 0.8);
+   text-align: center;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
 }
