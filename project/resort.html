@@ -43,7 +43,7 @@
             </header>
             <p>Whether you want an easy relaxing day, or a day filled with adrenaline, find a resort in New York here!
                 Different
-                resorts provide various types of terrain and amenities, which is a big decision factor when it comes to
+                resorts provide various types of terrain and amenities, which is a big deciding factor when it comes to
                 planning a trip. Finding a resort near you could be hard, so I hope this interactive map can help.</p>
         </div>
     </article>
@@ -125,7 +125,7 @@
                 .slice(0, 5);
 
             document.getElementById("closest").innerHTML =
-                "<h3>5 Closest Resorts To You</h3><ol>" +
+                "<h3>5 Closest Resorts to You</h3><ol>" +
                 top5.map(r => `<li>${r.name} — ${r.d.toFixed(1)} mi</li>`).join("") +
                 "</ol>";
             setTimeout(() => map.invalidateSize(), 200);
