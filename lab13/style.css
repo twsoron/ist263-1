@@ -1,42 +1,196 @@
-body{font-family:'Times New Roman', Times, serif; background-color: #fff0da; color: #2b3636;}
-h1,h2{color: #000000; text-align: center;}
-.evenrow{background-color:lightgrey}
-h1{font-size: 2em}
-h2{font-size: 1.5em}
-nav{background-color: #c2d8ff; padding: 10px; margin-bottom: 30px; border-radius: 1em;}
-nav a{color:#444554}
-nav a:hover{color:#7F7B82;}
-footer {overflow: hidden;}
-.clear {clear: both;}
-.left {float: left;}
-.right {float: right;}
-.banner{float: left; margin-right: 20px;}
-.pcentered {text-align: center;}
-img {max-width: 100%;}
+body {
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #fff0da;
+    color: #2b3636;
+}
+
+h1,
+h2 {
+    color: #000000;
+    text-align: center;
+}
+
+.evenrow {
+    background-color: lightgrey
+}
+
+h1 {
+    font-size: 2em
+}
+
+h2 {
+    font-size: 1.5em
+}
+
+nav {
+    background-color: #c2d8ff;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 1em;
+}
+
+nav a {
+    color: #444554
+}
+
+nav a:hover {
+    color: #7F7B82;
+}
+
+footer {
+    overflow: hidden;
+}
+
+.clear {
+    clear: both;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.banner {
+    float: left;
+    margin-right: 20px;
+}
+
+.pcentered {
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+}
 
 
-.part1 {display: flex; flex-direction: column; flex-wrap: wrap;}
-.part1 article {padding: 20px;}
-.article1, .article2, .article3{margin: 10px;}
-.article1{flex: 2; order: 1; background-color: bisque; border-radius: 1em;}
-.article2{flex: 2; order: 2; background-color: bisque; border-radius: 1em;}
-.article3{flex: 2; order: 3; background-color: bisque; border-radius: 1em;}
+.part1 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
 
-.behind_box {display: flex; flex-direction: column; background-color: bisque; border-radius: 1em;}
-.part2 {display: flex;}
-.part2 article {padding: 20px;}
-.address, .email{margin: 10px;}
-.address{flex: 1; order: 1; background-color: rgb(237, 197, 148); border-radius: 1em; margin: 10px; padding: 20px;}
-.email{flex: 1; order: 2; background-color: rgb(237, 197, 148); border-radius: 1em; margin: 10px; padding: 20px;}
+.part1 article {
+    padding: 20px;
+}
 
-.skillscontainer {display: flex; flex-wrap: wrap;}
+.article1,
+.article2,
+.article3 {
+    margin: 10px;
+}
 
-.skillscontainer div {flex: 1; text-align: center; padding: 20px; border-radius: 1em; margin: 10px; align-self: center;}
-#others {flex: 2; text-align: left; padding: 20px; background-color: rgb(237, 197, 148); border-radius: 1em; margin: 50px;}
-#others ul {font-size: 1.2em;}
-#other h2 {font-size: 1.5em;}
+.article1 {
+    flex: 2;
+    order: 1;
+    background-color: bisque;
+    border-radius: 1em;
+}
 
-    @media screen and (max-width: 999px) {
-     nav a {display: block; width: 100%; margin-bottom: 5px;}
-     nav span{display: none;}
+.article2 {
+    flex: 2;
+    order: 2;
+    background-color: bisque;
+    border-radius: 1em;
+}
+
+.article3 {
+    flex: 2;
+    order: 3;
+    background-color: bisque;
+    border-radius: 1em;
+}
+
+.behind_box {
+    display: flex;
+    flex-direction: column;
+    background-color: bisque;
+    border-radius: 1em;
+}
+
+.part2 {
+    display: flex;
+}
+
+.part2 article {
+    padding: 20px;
+}
+
+.address,
+.email {
+    margin: 10px;
+}
+
+.address {
+    flex: 1;
+    order: 1;
+    background-color: rgb(237, 197, 148);
+    border-radius: 1em;
+    margin: 10px;
+    padding: 20px;
+}
+
+.email {
+    flex: 1;
+    order: 2;
+    background-color: rgb(237, 197, 148);
+    border-radius: 1em;
+    margin: 10px;
+    padding: 20px;
+}
+
+.skillscontainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.skillscontainer div {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    border-radius: 1em;
+    margin: 10px;
+    align-self: center;
+}
+
+#others {
+    flex: 2;
+    text-align: left;
+    padding: 20px;
+    background-color: rgb(237, 197, 148);
+    border-radius: 1em;
+    margin: 50px;
+}
+
+#others ul {
+    font-size: 1.2em;
+}
+
+#other h2 {
+    font-size: 1.5em;
+}
+
+@media screen and (max-width: 999px) {
+    nav a {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
     }
+
+    nav span {
+        display: none;
+    }
+}
+
+.lora-primary {
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
