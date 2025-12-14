@@ -119,6 +119,12 @@ h3 {
    border-radius: 1em;
    background-color: rgba(174, 220, 255, 0.8);
 }
+.flex-nocenter-gear {
+   flex: 1;
+   padding: 10px;
+   border-radius: 1em;
+   background-color: rgba(174, 220, 255, 1);
+}
 
 #layout {
    display: flex;
