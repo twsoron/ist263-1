@@ -4,22 +4,73 @@
 <head>
     <meta charset="utf-8">
     <title>How It Works</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://kit.fontawesome.com/4cf078c340.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: rgba(174, 220, 255, 1);
+        }
+    </style>
 </head>
 
 <body>
-    <nav>
-        <a href="index.html">Home</a> <span>|</span>
-        <a href="resort.html">Resort Finder</a> <span>|</span>
-        <a href="gear.html">Gear Finder</a> <span>|</span>
-        <a href="howto.html">How It Works</a>
+    <nav class="navbar">
+        <div>
+            <i class="fa-solid fa-mountain"></i>
+            <span class="logo">SummitSearch</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a> <span>|</span>
+            <a href="resort.html">Resort Finder</a> <span>|</span>
+            <a href="gear.html">Gear Finder</a> <span>|</span>
+            <a href="howto.html">How It Works</a>
+        </div>
     </nav>
+    <br>
     <header>
-        <h1>How it works</h1>
+        <h1>How It Works</h1>
     </header>
     <main>
-        <p>Find instructions on how to use the site on this page</p>
-        <p>resort finder instructions</p>
-        <p>gear finder instructions</P>
+        <article class="flex-container">
+            <div class="flex-item-white">
+                <h2>Resort Finder</h2>
+                <p>The Resort Finder uses an interactive map to help you find ski resorts in New York. You can enter
+                    your
+                    location
+                    in the search bar, and it will find the closest resort to you. The map also has markers for each
+                    resort,
+                    which
+                    you can click on to see more information about the resort, such as its name, location, and a link to
+                    its
+                    website.</p>
+            </div>
+            <div class="flex-item-white">
+                <h3>Gear Finder</h3>
+                <p>The Gear Finder helps you find the best ski gear based on your skill level and style of skiing. You
+                    can select your skill
+                    level and type of skiing
+                    from a dropdown menu, and it will display a list of recommended skis, boots, bindings, and poles for
+                    that
+                    combination. Each piece of gear has a link to its website, where you can learn more about it and
+                    make a
+                    purchase if you wish.</p>
+            </div>
+        </article>
+        <br>
+        <article class="flex-container">
+            <div class="flex-item-white">
+                <h4>Behind the Scenes</h4>
+                <p>This website was built using HTML, CSS, and JavaScript. The Resort Finder uses the Leaflet.js library
+                    to
+                    create
+                    the interactive map, and PapaParse to parse the CSV data of ski resorts. The Gear Finder uses
+                    JavaScript
+                    to
+                    filter the gear data based on user input and display the results.</p>
+            </div>
+        </article>
     </main>
     <footer>
         <hr>
