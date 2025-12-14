@@ -65,9 +65,7 @@ body {
    margin: 4px 0;
 }
 
-.mobile-input {
-   display: none;
-}
+
 
 @media screen and (max-width: 999px) {
    nav a {
@@ -84,9 +82,6 @@ body {
       display: none;
    }
 
-   .desktop {
-      display: none
-   }
 }
 
 .floatleft {
