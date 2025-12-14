@@ -3,26 +3,266 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Gear Finder</title>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://kit.fontawesome.com/4cf078c340.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-image: url(../images/backround_gear.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: rgba(0, 0, 0, 0.2);
+            background-blend-mode: darken;
+        }
+    </style>
 </head>
 
 <body>
-    <nav>
-        <a href="index.html">Home</a> <span>|</span>
-        <a href="resort.html">Resort Finder</a> <span>|</span>
-        <a href="gear.html">Gear Finder</a> <span>|</span>
-        <a href="howto.html">How It Works</a>
+    <nav class="navbar">
+        <div>
+            <i class="fa-solid fa-mountain"></i>
+            <span class="logo">SummitSearch</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a> <span>|</span>
+            <a href="resort.html">Resort Finder</a> <span>|</span>
+            <a href="gear.html">Gear Finder</a> <span>|</span>
+            <a href="howto.html">How It Works</a>
+        </div>
     </nav>
-    <header>
-        <h1>Gear Finder</h1>
-    </header>
-    <img src ="../images/backround_gear.jpg" alt= "ski mountain" width ="600" height="400">
-    <img src ="../images/tree_ski.jpeg" alt= "ski gear" width ="400" height="400">
-      <main>
-        <p>Find gear on this page</p>
-        <p>select: type, brand, price</p>
-        <p>return table with output</P>
+    <br>
+    <main>
+        <article class=flex-container>
+            <div class="flex-nocenter">
+                <br>
+                <header>
+                    <h1>Gear Finder</h1>
+                </header>
+                <p>Find the gear that best suits you and your type of skiing. With the right gear skiing is safer and
+                    more
+                    enjoyable.
+                    Gear is found based on skill level and type of skiing, it will display below when you have made your
+                    selection. Click the icon to access the link to the item. Input your skill level and type of skiing
+                    to
+                    find
+                    the
+                    optimal combination of gear for you! </p>
+
+                <form id="gear">
+                    <label for="skill">Skill Level: </label>
+                    <select id="skill" required>
+                        <option value="" disabled selected>Select Skill Level:</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
+                    </select>
+
+                    <label for="style">Style: </label>
+                    <select id="style" required>
+                        <option value="" disabled selected>Select Skiing Style:</option>
+                        <option value="Groomer">Groomer</option>
+                        <option value="Park">Park</option>
+                        <option value="All-Mountain">All-Mountain</option>
+                        <option value="Powder">Powder</option>
+                    </select>
+
+                    <button id="gearBtn" type="button">Get Gear</button>
+                </form>
+                <br>
+                <br>
+                <br>
+            </div>
+        </article>
+        <div id="gearResult"></div>
+
     </main>
+
+    <script>
+        const gearTable = [
+            {
+                skill: "Beginner",
+                style: "Groomer",
+                skis: { name: "Rossignol Experience 76", url: "https://www.evo.com/ski-packages/rossignol-experience-76-xp-10-bindings" },
+                boots: { name: "Rossignol Evo 70", url: "https://www.evo.com/alpine-ski-boots/rossignol-evo-70" },
+                bindings: { name: "Tyrolia SX 7.5 GW", url: "https://www.steepandcheap.com/b/tyrolia-sx-7.5-gw-ski-bindings-2021" },
+                poles: { name: "Leki Rider Alpine Poles", url: "https://lekiusa.com/collections/alpine-skiing/products/rider-vario-sl-_leki-usa_alpine-skiing-poles_winter?variant=45316625367334" }
+            },
+
+            {
+                skill: "Beginner",
+                style: "Park",
+                skis: { name: "K2 Reckoner 92", url: "https://www.evo.com/skis/k2-reckoner-92-2025" },
+                boots: { name: "Nordica Speedmachine 3 85 W", url: "https://www.evo.com/alpine-ski-boots/nordica-sportmachine-3-90" },
+                bindings: { name: "Marker Squire 11 GW", url: "https://www.evo.com/alpine-ski-bindings/marker-squire-11" },
+                poles: { name: "Leki Rider Alpine Poles", url: "https://lekiusa.com/collections/alpine-skiing/products/rider-vario-sl-_leki-usa_alpine-skiing-poles_winter?variant=45316625367334" }
+            },
+
+            {
+                skill: "Beginner",
+                style: "All-Mountain",
+                skis: { name: "Salomon QST 92", url: "https://www.evo.com/skis/salomon-qst-92" },
+                boots: { name: "Atomic Hawx Prime 110 GW", url: "https://www.evo.com/alpine-ski-boots/atomic-hawx-prime-110-gw" },
+                bindings: { name: "Look NX 11 GW", url: "https://www.evo.com/alpine-ski-bindings/look-nx-11-gw" },
+                poles: { name: "Leki Rider Alpine Poles", url: "https://lekiusa.com/collections/alpine-skiing/products/rider-vario-sl-_leki-usa_alpine-skiing-poles_winter?variant=45316625367334" }
+            },
+
+            {
+                skill: "Intermediate",
+                style: "Groomer",
+                skis: { name: "Fischer RC One 90 GT", url: "https://www.evo.com/skis/fischer-nightstick-90-2025" },
+                boots: { name: "Atomic Hawx Prime 110 BOA", url: "https://www.evo.com/alpine-ski-boots/atomic-hawx-prime-110-boa" },
+                bindings: { name: "Marker Griffon 13 ID", url: "https://www.evo.com/alpine-ski-bindings/marker-griffon-13-id" },
+                poles: { name: "Leki Spark S Poles", url: "https://www.evo.com/ski-poles/leki-detect-s" }
+            },
+
+            {
+                skill: "Intermediate",
+                style: "Park",
+                skis: { name: "Atomic Bent 100", url: "https://www.evo.com/skis/atomic-bent-100" },
+                boots: { name: "Full Tilt Descendant 100", url: "https://www.evo.com/alpine-ski-boots/k2-fl3x-revolve-pro" },
+                bindings: { name: "Tyrolia Attack 11 GW", url: "https://www.evo.com/alpine-ski-bindings/tyrolia-attack-lyt-11-gw" },
+                poles: { name: "Leki Spark S Poles", url: "https://www.evo.com/ski-poles/leki-detect-s" }
+            },
+
+            {
+                skill: "Intermediate",
+                style: "All-Mountain",
+                skis: { name: "Rossignol Smasher 90", url: "https://www.evo.com/skis/rossignol-sender-94" },
+                boots: { name: "Atomic Hawx Prime 110 BOA", url: "https://www.evo.com/alpine-ski-boots/atomic-hawx-prime-110-boa" },
+                bindings: { name: "Salomon Warden 11 MNC", url: "https://www.evo.com/alpine-ski-bindings/salomon-strive-16-gw" },
+                poles: { name: "Leki Spark S Poles", url: "https://www.evo.com/ski-poles/leki-detect-s" }
+            },
+
+            {
+                skill: "Intermediate",
+                style: "Powder",
+                skis: { name: "Atomic Bent 110", url: "https://www.evo.com/skis/atomic-bent-110" },
+                boots: { name: "Dalbello Panterra 100 GW", url: "https://www.evo.com/alpine-touring-ski-boots/dalbello-cabrio-mv-free-100-if" },
+                bindings: { name: "Marker Griffon 13 ID", url: "https://www.evo.com/alpine-ski-bindings/marker-griffon-13-id" },
+                poles: { name: "Black Crows Furtis Poles", url: "https://www.evo.com/ski-poles/black-crows-furtis" }
+            },
+
+            {
+                skill: "Advanced",
+                style: "Groomer",
+                skis: { name: "Volkl Mantra 84", url: "https://www.evo.com/skis/volkl-mantra-88" },
+                boots: { name: "Salomon S/Pro Supra BOA 130 GW", url: "https://www.salomon.com/en-us/product/s-pro-supra-dual-boa-130-li8528/L47927000" },
+                bindings: { name: "Look Pivot 14 GW", url: "https://www.evo.com/alpine-ski-bindings/look-pivot-14-gw" },
+                poles: { name: "Leki Peak Vario 3D Poles", url: "https://www.evo.com/ski-poles/leki-peak-vario-3d" }
+            },
+
+            {
+                skill: "Advanced",
+                style: "Park",
+                skis: { name: "K2 Reckoner 122", url: "https://www.evo.com/skis/k2-reckoner-102" },
+                boots: { name: "K2 Recon Pro BOA", url: "https://www.evo.com/alpine-ski-boots/k2-recon-130-boa" },
+                bindings: { name: "Look Pivot 14 GW", url: "https://www.evo.com/alpine-ski-bindings/look-pivot-14-gw" },
+                poles: { name: "Leki Peak Vario 3D Poles", url: "https://www.evo.com/ski-poles/leki-peak-vario-3d" }
+            },
+
+            {
+                skill: "Advanced",
+                style: "All-Mountain",
+                skis: { name: "K2 Mindbender 89Ti", url: "https://www.backcountry.com/b/k2-mindbender-89ti-ski-2026" },
+                boots: { name: "Salomon S/Pro Supra BOA 130 GW", url: "https://www.salomon.com/en-us/product/s-pro-supra-dual-boa-130-li8528/L47927000" },
+                bindings: { name: "Marker Jester 16 ID", url: "https://www.evo.com/alpine-ski-bindings/marker-jester-16-id" },
+                poles: { name: "Leki Peak Vario 3D Poles", url: "https://www.evo.com/ski-poles/leki-peak-vario-3d" }
+            },
+
+            {
+                skill: "Advanced",
+                style: "Powder",
+                skis: { name: "Blizzard Rustler 11", url: "https://www.evo.com/skis/blizzard-rustler-11" },
+                boots: { name: "Tecnica Cochise 120", url: "https://www.evo.com/alpine-touring-ski-boots/tecnica-cochise-120-dyn" },
+                bindings: { name: "Salomon Shift MNC 13", url: "https://www.evo.com/alpine-touring-ski-bindings/salomon-slab-shift-mnc-13" },
+                poles: { name: "K2 LockJaw", url: "https://www.evo.com/ski-poles/k2-lockjaw-carbon-adjustable" }
+            },
+        ];
+
+
+        const gearForm = document.getElementById("gear");
+        const skillSel = document.getElementById("skill");
+        const styleSel = document.getElementById("style");
+        const gearBtn = document.getElementById("gearBtn");
+        const output = document.getElementById("gearResult");
+
+        function updateStyleOptions() {
+            const powderOption = styleSel.querySelector('option[value="Powder"]');
+            if (skillSel.value === "Beginner") {
+                powderOption.disabled = true;
+
+                if (styleSel.value === "Powder") {
+                    styleSel.value = "";
+                }
+            } else {
+                powderOption.disabled = false;
+            }
+        }
+        skillSel.addEventListener("change", updateStyleOptions);
+
+        gearBtn.onclick = () => {
+            const skill = skillSel.value;
+            const style = styleSel.value;
+
+            if (!skill) {
+                output.innerHTML = "<p>Please select both a skill level and a style.</p>";
+                return;
+            }
+            if (!style) {
+                output.innerHTML = "<p>Please select both a skill level and a style.</p>";
+                return;
+            }
+            let match = null;
+
+            for (let i = 0; i < gearTable.length; i++) {
+                const row = gearTable[i];
+                if (row.skill === skill && row.style === style) {
+                    match = row;
+                    break;
+                }
+            }
+
+            output.innerHTML = `
+ 
+    <div id = "gear-result">
+     <div class="gearcard">
+    <div class="gearicon"> <a href="${match.skis.url}" target="_blank"><i class="fa-solid fa-person-skiing"></i> </a> </div>
+    <div>
+      <div><b>Skis:</b> ${match.skis.name}</div>
+    </div>
+  </div>
+
+  <div class="gearcard">
+    <div class="gearicon"><a href="${match.skis.url}" target="_blank"> <i class="fa-solid fa-shoe-prints"></i></a></div>
+    <div>
+      <div><b>Boots:</b> ${match.boots.name}</div>
+    </div>
+  </div>
+
+  <div class="gearcard">
+    <div class="gearicon"><a href="${match.skis.url}" target="_blank"> <i class="fa-solid fa-lock"></i></a></div>
+    <div>
+      <div><b>Bindings:</b> ${match.bindings.name}</div>
+    </div>
+  </div>
+
+  <div class="gearcard">
+    <div class="gearicon"><a href="${match.skis.url}" target="_blank"> <i class="fa-solid fa-grip-lines-vertical"></i></a></div>
+    <div>
+      <div><b>Poles:</b> ${match.poles.name}</div>
+    </div>
+  </div>
+  </div>
+ 
+`;
+        };
+        
+    </script>
+
+
+
     <footer>
         <hr>
         <p>&copy;2025 Tim Soron</p>

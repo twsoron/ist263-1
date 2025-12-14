@@ -6,7 +6,9 @@
    background-color: #7cc5fc;
    border-radius: 1em;
 }
-.page {min-height: 100vh;
+
+.page {
+   min-height: 100vh;
    display: flex;
    flex-direction: column;
 }
@@ -63,6 +65,10 @@ body {
    margin: 4px 0;
 }
 
+.mobile-input {
+   display: none;
+}
+
 @media screen and (max-width: 999px) {
    nav a {
       display: block;
@@ -70,8 +76,16 @@ body {
       margin-bottom: 5px;
    }
 
+   .mobile-input {
+      display: inline;
+   }
+
    .nav-links span {
       display: none;
+   }
+
+   .desktop {
+      display: none
    }
 }
 
@@ -109,19 +123,31 @@ h3 {
 #layout {
    display: flex;
    height: 70vh;
+   gap: 20px;
 }
+
 #map {
    height: 60vh;
    flex: 3;
    border-radius: 1em;
+   padding: 20px;
+   border-radius: 1em;
+   background-color: rgba(174, 220, 255, 0.8);
+
 }
+
 #userside {
    flex: 1;
-   padding: 10px;
+   padding: 20px;
+   border-radius: 1em;
+   height: 60vh;
+   background-color: rgba(174, 220, 255, 0.8);
 }
+
 #personalback {
    border-radius: 1em;
 }
+
 #backgroundp {
    flex: 1;
    padding: 10px;
@@ -131,4 +157,77 @@ h3 {
    flex-direction: column;
    align-items: center;
    justify-content: center;
+}
+
+#userside input#loc {
+   width: 100%;
+   padding: 10px 12px;
+   font-size: 1em;
+   border: 1px solid #cbd5e1;
+   border-radius: 10px;
+   box-sizing: border-box;
+
+}
+
+
+#userside button#go {
+   width: 100%;
+   margin-top: 10px;
+   padding: 10px 12px;
+   font-size: 1em;
+
+   border-radius: 10px;
+   background: #0f172a;
+   color: white;
+
+}
+
+#userside button#go:hover {
+   opacity: 0.92;
+}
+
+#gear-result {
+   display: flex;
+   gap: 10px;
+   flex-wrap: wrap;
+   margin-top: 15px;
+}
+
+.gearcard {
+   flex: 1;
+   padding: 20px;
+   border-radius: 1em;
+   text-align: center;
+   box-sizing: border-box;
+   background-color: rgba(174, 220, 255, 1);
+}
+
+.gearicon {
+   font-size: 3em;
+   margin-bottom: 10px;
+}
+
+
+#skill,
+#style {
+
+   padding: 5px;
+   font-size: 1em;
+   border: 1px solid #cbd5e1;
+   border-radius: 10px;
+   box-sizing: border-box;
+
+}
+
+
+#gearBtn {
+
+   margin-top: 10px;
+   padding: 5px;
+   font-size: 1em;
+
+   border-radius: 10px;
+   background: #0f172a;
+   color: white;
+
 }

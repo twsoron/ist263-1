@@ -69,7 +69,7 @@
                     const acres = row.skiable_area_acres;
                     const popupContent = `
             <strong>${name}</strong><br>
-            Skiable area: ${acres}`;
+            Skiable area: ${acres} acres`;
                     resorts.push({ name, lat, lon });
                     L.marker([lat, lon])
                         .addTo(map)
@@ -89,7 +89,7 @@
         async function geocode(q) {
             const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(q)}`;
             const data = await (await fetch(url)).json();
-            if (!data.length) throw Error("Location not found");
+            if (!data.length) throw Error("Location not found, make sure to add a city and New York");
             return { lat: +data[0].lat, lon: +data[0].lon };
         }
 
@@ -115,7 +115,7 @@
                 .slice(0, 5);
 
             document.getElementById("closest").innerHTML =
-                "<h3>5 Closest Resorts</h3><ol>" +
+                "<h3>5 Closest Resorts To You</h3><ol>" +
                 top5.map(r => `<li>${r.name} — ${r.d.toFixed(1)} mi</li>`).join("") +
                 "</ol>";
             setTimeout(() => map.invalidateSize(), 200);
