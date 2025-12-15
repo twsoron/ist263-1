@@ -242,3 +242,8 @@ h4 {
    text-align: center;
    flex-direction: column;
 }
+
+.footer-ht {
+   color: rgb(0, 0, 0);
+   font-size: 0.6em;
+}
